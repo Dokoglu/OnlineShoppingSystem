@@ -1,6 +1,6 @@
 package com.onlineshopping.demo.entities;
 
-public class Orders extends Customer{
+public class Orders {
 
 	private int orderID;
 	private String orderDate;
@@ -8,8 +8,8 @@ public class Orders extends Customer{
 	
 	
 	
-	public Orders(int id, int creditCardId, int orderID, String orderDate, int customerID) {
-		super(id, creditCardId);
+	public Orders(int orderID, String orderDate, int customerID) {
+
 		this.orderID = orderID;
 		this.orderDate = orderDate;
 		this.customerID = customerID;
