@@ -1,5 +1,14 @@
 package com.onlineshopping.demo.service;
 
-public class ProductService {
+import com.onlineshopping.demo.entities.Product;
 
+public interface ProductService {
+
+	public void add(Product product);
+	public void delete(int id);
+	public void update(Product product);
+	
+	
+	
+	
 }
