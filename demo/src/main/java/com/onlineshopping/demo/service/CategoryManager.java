@@ -1,10 +1,12 @@
 package com.onlineshopping.demo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.onlineshopping.demo.entities.Category;
 import com.onlineshopping.demo.repository.CategoryRepository;
 
+@Service
 public class CategoryManager implements CategoryDao{
 	
 	@Autowired
