@@ -32,7 +32,7 @@ public class Category {
 		this.name = name;
 	}
 	//deneme
-	
+	//Galatasaray Spor Kulübü
 	
 	
 	
