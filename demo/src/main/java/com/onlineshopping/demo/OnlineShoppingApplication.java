@@ -13,10 +13,6 @@ public class OnlineShoppingApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(OnlineShoppingApplication.class, args);
 		
-		Category category1=new Category(1,"Bilgisyar");
-		
-		CategoryDao categoryDao=new CategoryManager();
-		categoryDao.add(category1);
 	}
 
 }

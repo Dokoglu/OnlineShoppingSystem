@@ -1,26 +1,35 @@
 package com.onlineshopping.demo.service;
 
-import java.util.ArrayList;
+import org.springframework.stereotype.Service;
 
+import com.onlineshopping.demo.dto.CreateProductRequest;
 import com.onlineshopping.demo.entities.Product;
+import com.onlineshopping.demo.repository.ProductRepository;
 
-public class ProductManager implements ProductService{
-	
-	ArrayList<Product> productList = new ArrayList<>();
-	
-	public void add(Product product) {		
-		productList.add(product);
+@Service
+public class ProductManager implements ProductService {
+
+	private ProductRepository productRepository;
+
+	public void add(CreateProductRequest createProductRequest) {
+		CreateProductRequest productRequest = new CreateProductRequest();
+		Product product = new Product();
+		product.setProductID(productRequest.getId());
+		product.setCategooryID(productRequest.getCategoryID());
+		product.setProductName(productRequest.getName());
+
+		this.productRepository.save(product);
 	}
-	
-	public void delete(Product product) { //Direkt olarak id almamalı produnc.getID yapmalıyız
-		productList.remove(product);
+
+	public void delete(int id) {
+		this.productRepository.deleteById(id);
 	}
-	
-	public void update(Product product) {
-		for(Product p: productList) {
-			if(p.getProductID() == product.getProductID())
+
+	public void update(CreateProductRequest createProductRequest, int id) {
+		for (Product p : productList) {
+			if (p.getProductID() == product.getProductID())
 				p = product;
 		}
 	}
-	
+
 }

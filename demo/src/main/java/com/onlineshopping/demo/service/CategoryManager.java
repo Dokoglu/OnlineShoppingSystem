@@ -23,8 +23,6 @@ public class CategoryManager implements CategoryDao{
 	public void view(Category category) {
 		// TODO Auto-generated method stub
 		
-		
-		
 	}
 
 }
