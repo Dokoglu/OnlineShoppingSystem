@@ -22,6 +22,13 @@ public class Person {
 	
 	//Getter Setter Methods
 
+	public Person() {
+		
+	}
+
+
+
+
 	public String getName() {
 		return name;
 	}
