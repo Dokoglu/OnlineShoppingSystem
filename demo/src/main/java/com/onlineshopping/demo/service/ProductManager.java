@@ -3,6 +3,7 @@ package com.onlineshopping.demo.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.onlineshopping.demo.dto.CreateProductRequest;
@@ -13,7 +14,8 @@ import com.onlineshopping.demo.repository.ProductRepository;
 
 @Service
 public class ProductManager implements ProductService {
-
+	
+	@Autowired
 	private ProductRepository productRepository;
 
 	public void add(CreateProductRequest createProductRequest) {

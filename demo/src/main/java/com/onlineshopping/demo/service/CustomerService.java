@@ -1,7 +1,9 @@
 package com.onlineshopping.demo.service;
 
-import com.onlineshopping.demo.dto.CreateCustomerRequest;
+import org.springframework.stereotype.Service;
 
+import com.onlineshopping.demo.dto.CreateCustomerRequest;
+@Service
 public interface CustomerService {  
 	
 	void add(CreateCustomerRequest createCustomerRequest);

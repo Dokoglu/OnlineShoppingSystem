@@ -1,9 +1,15 @@
 package com.onlineshopping.demo.entities;
 
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 public class Customer extends Person{
 	
 // TODO Auto-generated constructor stub
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private int creditCardId;
 	

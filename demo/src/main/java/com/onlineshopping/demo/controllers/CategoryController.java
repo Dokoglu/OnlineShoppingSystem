@@ -16,22 +16,20 @@ import com.onlineshopping.demo.service.CategoryDao;
 @RestController
 @RequestMapping("/categories")
 public class CategoryController {
-	
+
 	@Autowired
 	private CategoryDao categoryDao;
-	
+
 	@PostMapping("/add")
 	public void add(@RequestBody CreateCategoryRequest createCategoryRequest) {
 		categoryDao.add(createCategoryRequest);
-		
+
 	}
-	
+
 	@GetMapping("/getAll")
-	public List<Category> getAll(){
+	public List<Category> getAll() {
 		return categoryDao.getAll();
-		
+
 	}
-	
-	
 
 }

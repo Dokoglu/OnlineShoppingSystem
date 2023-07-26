@@ -1,8 +1,13 @@
 package com.onlineshopping.demo.entities;
 
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 public class Product {
 
-//	@Id
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int productID;
 	private String productName;
 	private String description;
