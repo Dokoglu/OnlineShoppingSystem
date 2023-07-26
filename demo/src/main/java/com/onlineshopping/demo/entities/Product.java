@@ -7,13 +7,16 @@ public class Product {
 	private String productName;
 	private String description;
 	private int categooryID;
+	private float price;
 
-	public Product(int productID, String productName, String description, int categooryID) {
+	public Product(int productID, String productName, String description, int categooryID, float price) {
 
 		this.productID = productID;
 		this.productName = productName;
 		this.description = description;
 		this.categooryID = categooryID;
+		this.price = price;
+		
 	}
 	
 
@@ -55,5 +58,16 @@ public class Product {
 	public void setCategooryID(int categooryID) {
 		this.categooryID = categooryID;
 	}
+
+
+	public float getPrice() {
+		return price;
+	}
+
+
+	public void setPrice(float price) {
+		this.price = price;
+	}
+	
 
 }
