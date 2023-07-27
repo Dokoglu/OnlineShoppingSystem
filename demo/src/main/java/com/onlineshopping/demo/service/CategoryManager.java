@@ -3,12 +3,14 @@ package com.onlineshopping.demo.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.onlineshopping.demo.dto.CreateCategoryRequest;
 import com.onlineshopping.demo.entities.Category;
 import com.onlineshopping.demo.repository.CategoryRepository;
 
+@Component
 @Service
 public class CategoryManager implements CategoryDao{
 	

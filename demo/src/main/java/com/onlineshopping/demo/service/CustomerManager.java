@@ -1,12 +1,14 @@
 package com.onlineshopping.demo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.onlineshopping.demo.dto.CreateCustomerRequest;
 import com.onlineshopping.demo.entities.Customer;
 import com.onlineshopping.demo.repository.CustomerRepository;
 
+@Component
 @Service
 public class CustomerManager implements CustomerService{
 	
