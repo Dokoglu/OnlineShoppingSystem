@@ -1,5 +1,6 @@
 package com.onlineshopping.demo.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.onlineshopping.demo.dto.CreateCategoryRequest;
+import com.onlineshopping.demo.dto.GetAllCategoryResponse;
+import com.onlineshopping.demo.dto.GetByIdCategoryResponse;
 import com.onlineshopping.demo.entities.Category;
 import com.onlineshopping.demo.repository.CategoryRepository;
 
@@ -30,10 +33,24 @@ public class CategoryManager implements CategoryDao{
 	}
 
 	@Override
-	public List<Category> getAll() {
+	public List<GetAllCategoryResponse> getAllResponse() {
 		// TODO Auto-generated method stub
-		return categoryRepository.findAll();
+		List<GetAllCategoryResponse> categoryResponse=new ArrayList<GetAllCategoryResponse>();
+		List<Category> category=categoryRepository.findAll();
+		for(Category ct: category) {
+			GetAllCategoryResponse responseItem=new GetAllCategoryResponse();
+			responseItem.setName(ct.getName());
+			categoryResponse.add(responseItem);
+		}
+		return categoryResponse;
 	}
+
+	@Override
+	public GetByIdCategoryResponse getById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 
 	
 

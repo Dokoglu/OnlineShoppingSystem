@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.onlineshopping.demo.dto.CreateCategoryRequest;
+import com.onlineshopping.demo.dto.GetAllCategoryResponse;
 import com.onlineshopping.demo.entities.Category;
 import com.onlineshopping.demo.service.CategoryDao;
 
@@ -27,9 +28,8 @@ public class CategoryController {
 	}
 
 	@GetMapping("/getAll")
-	public List<Category> getAll() {
-		return categoryDao.getAll();
-
+	public List<GetAllCategoryResponse> getAllResponse() {
+		return categoryDao.getAllResponse();
 	}
 
 }
