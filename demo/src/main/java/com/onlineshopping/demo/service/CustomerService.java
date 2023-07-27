@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 
 import com.onlineshopping.demo.dto.CreateCustomerRequest;
 
-@Service
+
 public interface CustomerService {  
 	
 	void add(CreateCustomerRequest createCustomerRequest);

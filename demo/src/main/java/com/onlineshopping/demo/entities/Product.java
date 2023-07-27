@@ -15,15 +15,15 @@ public class Product {
 	private int productID;
 	private String productName;
 	private String description;
-	private int categooryID;
+	private int categoryID;
 	private float price;
 
-	public Product(int productID, String productName, String description, int categooryID, float price) {
+	public Product(int productID, String productName, String description, int categoryID, float price) {
 
 		this.productID = productID;
 		this.productName = productName;
 		this.description = description;
-		this.categooryID = categooryID;
+		this.categoryID = categoryID;
 		this.price = price;
 		
 	}
@@ -60,12 +60,12 @@ public class Product {
 		this.description = description;
 	}
 
-	public int getCategooryID() {
-		return categooryID;
+	public int getCategoryID() {
+		return categoryID;
 	}
 
-	public void setCategooryID(int categooryID) {
-		this.categooryID = categooryID;
+	public void setCategoryID(int categoryID) {
+		this.categoryID = categoryID;
 	}
 
 

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.onlineshopping.demo.dto.CreateProductRequest;
@@ -13,7 +12,7 @@ import com.onlineshopping.demo.dto.GetByIdProductResponse;
 import com.onlineshopping.demo.entities.Product;
 import com.onlineshopping.demo.repository.ProductRepository;
 
-@Component
+
 @Service
 public class ProductManager implements ProductService {
 	
@@ -24,8 +23,10 @@ public class ProductManager implements ProductService {
 		CreateProductRequest productRequest = new CreateProductRequest();
 		Product product = new Product();
 		product.setProductID(productRequest.getId());
-		product.setCategooryID(productRequest.getCategoryID());
+		product.setDescription(productRequest.getDescription());
+		product.setCategoryID(productRequest.getCategoryID());
 		product.setProductName(productRequest.getName());
+		product.setPrice(productRequest.getPrice());
 			
 		this.productRepository.save(product);
 	}
@@ -37,7 +38,7 @@ public class ProductManager implements ProductService {
 	public void update(CreateProductRequest createProductRequest, int id) {
 		CreateProductRequest productRequest = new CreateProductRequest();
 		Product product = productRepository.findById(id).orElseThrow();
-		product.setCategooryID(productRequest.getCategoryID());
+		product.setCategoryID(productRequest.getCategoryID());
 		product.setPrice(productRequest.getPrice());
 		product.setProductName(productRequest.getName());
 		

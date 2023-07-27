@@ -4,10 +4,11 @@ public class CreateProductRequest {
 
 	private int id;
 	private String name;
+	private String description;
 	private int categoryID;
 	private float price;
 	
-	public CreateProductRequest(int id, String name, int categoryID, float price) {
+	public CreateProductRequest(int id, String name,String description ,int categoryID, float price) {
 		
 		this.id = id;
 		this.name = name;
@@ -17,8 +18,18 @@ public class CreateProductRequest {
 	}
 	
 	
+	public String getDescription() {
+		return description;
+	}
+
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+
 	public CreateProductRequest() {
-		super();
+		
 	}
 	public int getId() {
 		return id;

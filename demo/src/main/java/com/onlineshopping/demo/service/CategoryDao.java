@@ -8,7 +8,7 @@ import com.onlineshopping.demo.dto.CreateCategoryRequest;
 import com.onlineshopping.demo.dto.GetAllCategoryResponse;
 import com.onlineshopping.demo.dto.GetByIdCategoryResponse;
 
-@Service
+
 public interface CategoryDao {
 	
 	void add(CreateCategoryRequest createCategoryRequest);

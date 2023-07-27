@@ -8,7 +8,7 @@ import com.onlineshopping.demo.dto.CreateCustomerRequest;
 import com.onlineshopping.demo.entities.Customer;
 import com.onlineshopping.demo.repository.CustomerRepository;
 
-@Component
+
 @Service
 public class CustomerManager implements CustomerService{
 	

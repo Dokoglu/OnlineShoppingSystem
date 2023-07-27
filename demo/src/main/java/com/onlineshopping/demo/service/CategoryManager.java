@@ -13,7 +13,7 @@ import com.onlineshopping.demo.dto.GetByIdCategoryResponse;
 import com.onlineshopping.demo.entities.Category;
 import com.onlineshopping.demo.repository.CategoryRepository;
 
-@Component
+
 @Service
 public class CategoryManager implements CategoryDao{
 	
