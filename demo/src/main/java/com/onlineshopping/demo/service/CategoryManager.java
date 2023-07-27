@@ -48,8 +48,14 @@ public class CategoryManager implements CategoryDao{
 	@Override
 	public GetByIdCategoryResponse getById(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		GetByIdCategoryResponse response=new GetByIdCategoryResponse();
+		Category category=this.categoryRepository.findById(id).orElseThrow();
+		response.setName(category.getName());
+		
+		return response;
 	}
+
+
 	
 
 	
