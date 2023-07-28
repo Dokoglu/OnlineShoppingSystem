@@ -3,6 +3,7 @@ package com.onlineshopping.demo.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.onlineshopping.demo.dto.CreateProductRequest;
@@ -17,7 +19,8 @@ import com.onlineshopping.demo.dto.GetAllProductResponse;
 import com.onlineshopping.demo.dto.GetByIdProductResponse;
 import com.onlineshopping.demo.service.ProductService;
 
-@RestController
+@Controller
+@ResponseBody
 @RequestMapping("/products")
 public class ProductController {
 
