@@ -3,8 +3,6 @@ package com.onlineshopping.demo.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.onlineshopping.demo.dto.CreateCategoryRequest;
@@ -17,16 +15,20 @@ import com.onlineshopping.demo.repository.CategoryRepository;
 @Service
 public class CategoryManager implements CategoryDao{
 	
-	@Autowired
-	private CategoryRepository categoryRepository;
+
+	private final CategoryRepository categoryRepository;
+
+	public CategoryManager(CategoryRepository categoryRepository) {
+		this.categoryRepository = categoryRepository;
+	}
 
 	@Override
 	public void add(CreateCategoryRequest createCategoryRequest) {
 		// TODO Auto-generated method stub
 		Category category =new Category();
-		CreateCategoryRequest categoryRequest=new CreateCategoryRequest();
-		category.setId(categoryRequest.getId());
-		category.setName(categoryRequest.getName());
+		
+		category.setId(createCategoryRequest.getId());
+		category.setName(createCategoryRequest.getName());
 		this.categoryRepository.save(category);
 	
 		

@@ -1,7 +1,6 @@
 package com.onlineshopping.demo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.onlineshopping.demo.dto.CreateCustomerRequest;
@@ -19,10 +18,9 @@ public class CustomerManager implements CustomerService{
 	public void add(CreateCustomerRequest createCustomerRequest) {
 		// TODO Auto-generated method stub
 		Customer customer=new Customer();
-		CreateCustomerRequest customerRequest=new CreateCustomerRequest();
-		customer.setId(customerRequest.getId());
-		customer.setName(customerRequest.getName());
-		customer.setSurname(customerRequest.getSurname());
+		customer.setId(createCustomerRequest.getId());
+		customer.setName(createCustomerRequest.getName());
+		customer.setSurname(createCustomerRequest.getSurname());
 		this.customerRepository.save(customer);
 		
 	}
@@ -46,9 +44,9 @@ public class CustomerManager implements CustomerService{
 		// TODO Auto-generated method stub
 		
 		Customer customer=this.customerRepository.findById(id).get();
-		CreateCustomerRequest customerRequest=new CreateCustomerRequest();
-		customer.setName(customerRequest.getName());
-		customer.setSurname(customer.getSurname());
+		
+		customer.setName(createCustomerRequest.getName());
+		customer.setSurname(createCustomerRequest.getSurname());
 		this.customerRepository.save(customer);
 		
 		

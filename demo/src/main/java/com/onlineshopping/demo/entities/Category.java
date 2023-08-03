@@ -1,9 +1,12 @@
 package com.onlineshopping.demo.entities;
+import java.util.List;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 
@@ -13,7 +16,11 @@ public class Category {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
+	@Column(name="KategoriID")
 	private int id;
+	
+	@Column(name="KategoriAdı")
 	private String name;
 	
 	public Category(int id, String name) {
@@ -25,6 +32,10 @@ public class Category {
 	public Category() {
 		
 	}
+	@OneToMany(mappedBy="category")
+	List<Product> products;
+	
+	
 
 	public int getId() {
 		return id;

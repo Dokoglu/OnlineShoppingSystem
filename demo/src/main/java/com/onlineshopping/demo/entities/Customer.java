@@ -8,7 +8,7 @@ import jakarta.persistence.Table;
 
 @Table(name="Customer")
 @Entity
-public class Customer extends Person{
+public class Customer extends User{
 	
 // TODO Auto-generated constructor stub
 	

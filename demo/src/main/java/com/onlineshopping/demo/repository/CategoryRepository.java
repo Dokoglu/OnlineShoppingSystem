@@ -6,9 +6,8 @@ import org.springframework.stereotype.Repository;
 
 import com.onlineshopping.demo.entities.Category;
 
-@EnableJpaRepositories
 @Repository
-public interface CategoryRepository extends JpaRepository<Category,Integer > {
+public interface CategoryRepository extends JpaRepository<Category,Integer> {
 
 	
 }

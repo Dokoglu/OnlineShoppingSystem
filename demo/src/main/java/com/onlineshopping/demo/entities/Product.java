@@ -1,9 +1,14 @@
 package com.onlineshopping.demo.entities;
 
+import java.util.List;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Table(name="Product")
@@ -12,10 +17,19 @@ public class Product {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="Ürün ID")
 	private int productID;
+	
+	@Column(name="ÜrünAdı")
 	private String productName;
-	private String description;
+	
+	@Column(name="ÜrünAçıklaması")
+	private String description;	
+	
+	@Column(name="ÜrünKategorisi")
 	private int categoryID;
+	
+	@Column(name="ÜrünFiyatı")
 	private float price;
 
 	public Product(int productID, String productName, String description, int categoryID, float price) {
@@ -25,13 +39,15 @@ public class Product {
 		this.description = description;
 		this.categoryID = categoryID;
 		this.price = price;
+		}
+	
+	public Product() {
 		
 	}
+	@ManyToOne
+	@JoinColumn(name="categoryID")
+	private List<Category> categories;
 	
-
-	public Product() {
-		super();
-	}
 
 
 	// Getter and Setter Methods

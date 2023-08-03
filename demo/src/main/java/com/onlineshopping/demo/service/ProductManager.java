@@ -20,13 +20,11 @@ public class ProductManager implements ProductService {
 	private ProductRepository productRepository;
 
 	public void add(CreateProductRequest createProductRequest) {
-		CreateProductRequest productRequest = new CreateProductRequest();
 		Product product = new Product();
-		product.setProductID(productRequest.getId());
-		product.setDescription(productRequest.getDescription());
-		product.setCategoryID(productRequest.getCategoryID());
-		product.setProductName(productRequest.getName());
-		product.setPrice(productRequest.getPrice());
+		product.setDescription(createProductRequest.getDescription());
+		product.setCategoryID(createProductRequest.getCategoryID());
+		product.setProductName(createProductRequest.getName());
+		product.setPrice(createProductRequest.getPrice());
 			
 		this.productRepository.save(product);
 	}
@@ -36,11 +34,10 @@ public class ProductManager implements ProductService {
 	}
 
 	public void update(CreateProductRequest createProductRequest, int id) {
-		CreateProductRequest productRequest = new CreateProductRequest();
 		Product product = productRepository.findById(id).orElseThrow();
-		product.setCategoryID(productRequest.getCategoryID());
-		product.setPrice(productRequest.getPrice());
-		product.setProductName(productRequest.getName());
+		product.setCategoryID(createProductRequest.getCategoryID());
+		product.setPrice(createProductRequest.getPrice());
+		product.setProductName(createProductRequest.getName());
 		
 		this.productRepository.save(product);
 	}

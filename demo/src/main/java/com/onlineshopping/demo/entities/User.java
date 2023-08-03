@@ -1,6 +1,6 @@
 package com.onlineshopping.demo.entities;
 
-public class Person {
+public class User {
 
 	private String name;
 	private String surname;
@@ -8,7 +8,7 @@ public class Person {
 	private String eMail;
 	private String adress;
 	
-	public Person(String name, String surname, String phoneNumber, String eMail, String adress) {
+	public User(String name, String surname, String phoneNumber, String eMail, String adress) {
 		
 		this.name = name;
 		this.surname = surname;
@@ -22,7 +22,7 @@ public class Person {
 	
 	//Getter Setter Methods
 
-	public Person() {
+	public User() {
 		
 	}
 

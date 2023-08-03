@@ -2,8 +2,6 @@ package com.onlineshopping.demo.service;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
 import com.onlineshopping.demo.dto.CreateProductRequest;
 import com.onlineshopping.demo.dto.GetAllProductResponse;
 import com.onlineshopping.demo.dto.GetByIdProductResponse;

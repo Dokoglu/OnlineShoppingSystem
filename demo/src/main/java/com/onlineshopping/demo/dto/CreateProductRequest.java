@@ -9,8 +9,7 @@ public class CreateProductRequest {
 	private float price;
 	
 	public CreateProductRequest(int id, String name,String description ,int categoryID, float price) {
-		
-		this.id = id;
+		this.id=id;
 		this.name = name;
 		this.categoryID = categoryID;
 		this.price = price;
@@ -18,6 +17,16 @@ public class CreateProductRequest {
 	}
 	
 	
+	public int getId() {
+		return id;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
 	public String getDescription() {
 		return description;
 	}
@@ -31,12 +40,7 @@ public class CreateProductRequest {
 	public CreateProductRequest() {
 		
 	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
+	
 	public String getName() {
 		return name;
 	}
