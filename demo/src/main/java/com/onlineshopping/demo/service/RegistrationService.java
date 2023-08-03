@@ -1,6 +1,6 @@
 package com.onlineshopping.demo.service;
 
-import com.onlineshopping.demo.controllers.RegistrationBody;
+import com.onlineshopping.demo.controllers.model.RegistrationBody;
 
 public interface RegistrationService {
 	
