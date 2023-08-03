@@ -2,9 +2,8 @@ package com.onlineshopping.demo.service;
 
 import org.springframework.stereotype.Service;
 
+import com.onlineshopping.demo.controllers.RegistrationBody;
 import com.onlineshopping.demo.entities.Customer;
-import com.onlineshopping.demo.entities.RegistrationBody;
-import com.onlineshopping.demo.entities.User;
 import com.onlineshopping.demo.repository.CustomerRepository;
 @Service
 public class RegistrationManager implements RegistrationService{
