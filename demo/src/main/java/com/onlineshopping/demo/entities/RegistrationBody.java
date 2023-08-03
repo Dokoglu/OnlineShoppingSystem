@@ -14,7 +14,7 @@ public class RegistrationBody {
 	private String name;
 	
 	@NotNull
-	@Size(min=5, max=40)
+	@Size(min=2, max=40)
 	private String surname;
 	
 	@NotNull

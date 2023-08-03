@@ -44,9 +44,9 @@ public class Product {
 	public Product() {
 		
 	}
-	@ManyToOne
-	@JoinColumn(name="categoryID")
-	private List<Category> categories;
+//	@ManyToOne
+//	@JoinColumn(name="categoryID")
+//	private List<Category> categories;
 	
 
 

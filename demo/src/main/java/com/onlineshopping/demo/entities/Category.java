@@ -32,8 +32,8 @@ public class Category {
 	public Category() {
 		
 	}
-	@OneToMany(mappedBy="category")
-	List<Product> products;
+//	@OneToMany(mappedBy="category")
+	//List<Product> products;
 	
 	
 
