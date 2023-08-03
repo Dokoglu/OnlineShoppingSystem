@@ -1,5 +1,7 @@
 package com.onlineshopping.demo.entities;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,41 +12,76 @@ import jakarta.persistence.Table;
 @Entity
 public class Customer extends User{
 	
-// TODO Auto-generated constructor stub
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	private int creditCardId;
 	
-	public Customer(String name, String surname, String phoneNumber, String eMail,
-			String adress, int id, int creditCardId) {
-		super(name, surname, phoneNumber, eMail, adress);
-		this.id=id;
-		this.creditCardId=creditCardId;
+	private int id;
+	private List<Product> shoppingCart;
+	private String name;
+	private String surname;
+	private String eMail;
+	private String password;
+	
+	public Customer(int id, List<Product> shoppingCart, String name, String surname,  String eMail, String password,
+			String type) {
+		super(type);
+		
+		this.id = id;
+		this.shoppingCart = shoppingCart;
+		this.password = password;
+		
 	}
 	
 	public Customer() {
 		
 	}
-
+	
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getCreditCardId() {
-		return creditCardId;
+
+	public List<Product> getShoppingCart() {
+		return shoppingCart;
 	}
-	public void setCreditCardId(int creditCardId) {
-		this.creditCardId = creditCardId;
+
+	public void setShoppingCart(List<Product> shoppingCart) {
+		this.shoppingCart = shoppingCart;
 	}
-	
-	
-	
-	
-	
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getSurname() {
+		return surname;
+	}
+
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
+
+	public String geteMail() {
+		return eMail;
+	}
+
+	public void seteMail(String eMail) {
+		this.eMail = eMail;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	
 
 }

@@ -1,5 +1,7 @@
 package com.onlineshopping.demo.service;
 
-public interface UserService  {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface UserService {
 
 }

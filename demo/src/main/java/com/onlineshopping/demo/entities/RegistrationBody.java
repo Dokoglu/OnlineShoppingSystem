@@ -2,6 +2,7 @@ package com.onlineshopping.demo.entities;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
@@ -27,12 +28,17 @@ public class RegistrationBody {
 			 message = "Password must be of 6 to 12")
 	private String password;
 	
-	public RegistrationBody(String name, String surname, String email, String password) {
+	@NotNull
+	@NotEmpty
+	private String type;
+	
+	public RegistrationBody(String name, String surname, String email, String password, String type) {
 		
 		this.name = name;
 		this.surname = surname;
 		this.email = email;
 		this.password = password;
+		this.type = type;
 	}
 
 	public RegistrationBody() {
@@ -70,6 +76,14 @@ public class RegistrationBody {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 	
 	
