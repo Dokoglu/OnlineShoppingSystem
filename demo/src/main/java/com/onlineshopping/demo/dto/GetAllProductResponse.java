@@ -10,7 +10,7 @@ public class GetAllProductResponse {
 		this.price = price;
 	}
 	public GetAllProductResponse() {
-		super();
+	
 	}
 	public String getName() {
 		return name;
