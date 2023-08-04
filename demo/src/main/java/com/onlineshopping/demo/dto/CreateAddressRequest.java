@@ -2,7 +2,6 @@ package com.onlineshopping.demo.dto;
 
 public class CreateAddressRequest {
 
-	private int id;
 	private String name;
 	private String surname;
 	private String phoneNumber;
@@ -11,10 +10,9 @@ public class CreateAddressRequest {
 	private String city;
 	private String address;
 
-	public CreateAddressRequest(int id, String name, String surname, String phoneNumber, String header, String country,
+	public CreateAddressRequest(String name, String surname, String phoneNumber, String header, String country,
 			String city, String address) {
 
-		this.id = id;
 		this.name = name;
 		this.surname = surname;
 		this.phoneNumber = phoneNumber;
@@ -26,14 +24,6 @@ public class CreateAddressRequest {
 
 	public CreateAddressRequest() {
 
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getName() {

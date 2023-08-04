@@ -14,7 +14,6 @@ public class Address {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@NotNull
-	@NotEmpty
 	private int id;
 	
 	@NotNull
@@ -34,7 +33,7 @@ public class Address {
 	
 	@NotNull
 	@NotEmpty
-	@Size(min=3, max=20)
+	@Size(min=2, max=20)
 	private String header;
 	
 	@NotNull

@@ -25,7 +25,6 @@ public class AddressManager implements AdressService {
 		address.setCity(addressRequest.getCity());
 		address.setCountry(addressRequest.getCountry());
 		address.setHeader(addressRequest.getHeader());
-		address.setId(addressRequest.getId());
 		address.setPhoneNumber(addressRequest.getPhoneNumber());
 		address.setSurname(addressRequest.getSurname());
 
@@ -46,7 +45,6 @@ public class AddressManager implements AdressService {
 		address.setCity(addressRequest.getCity());
 		address.setCountry(addressRequest.getCountry());
 		address.setHeader(addressRequest.getHeader());
-		address.setId(addressRequest.getId());
 		address.setPhoneNumber(addressRequest.getPhoneNumber());
 		address.setSurname(addressRequest.getSurname());
 
