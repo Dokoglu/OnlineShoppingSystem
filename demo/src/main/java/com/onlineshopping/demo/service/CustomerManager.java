@@ -16,41 +16,33 @@ public class CustomerManager implements CustomerService{
 
 	@Override
 	public void add(CreateCustomerRequest createCustomerRequest) {
-		// TODO Auto-generated method stub
+
 		Customer customer=new Customer();
+		
 		customer.setId(createCustomerRequest.getId());
 		customer.setName(createCustomerRequest.getName());
 		customer.setSurname(createCustomerRequest.getSurname());
-		this.customerRepository.save(customer);
-		
+		this.customerRepository.save(customer);		
 	}
 
 	@Override
 	public void delete(int id) {
-		// TODO Auto-generated method stub
-		
 		this.customerRepository.deleteById(id);
 	}
 
 	@Override
 	public void getAll() {
-		// TODO Auto-generated method stub
-		this.customerRepository.findAll();
-		
+		this.customerRepository.findAll();		
 	}
 
 	@Override
 	public void update(CreateCustomerRequest createCustomerRequest, int id) {
-		// TODO Auto-generated method stub
 		
 		Customer customer=this.customerRepository.findById(id).get();
 		
 		customer.setName(createCustomerRequest.getName());
 		customer.setSurname(createCustomerRequest.getSurname());
-		this.customerRepository.save(customer);
-		
-		
-		
+		this.customerRepository.save(customer);	
 	}
 
 }

@@ -8,47 +8,37 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-@Table(name="Customer")
+@Table(name = "Customer")
 @Entity
-public class Customer extends User{
-	
+public class Customer extends User {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
+
 	private int id;
-	private List<Product> shoppingCart;
 	private String name;
 	private String surname;
 	private String eMail;
 	private String password;
-	
-	public Customer(int id, List<Product> shoppingCart, String name, String surname,  String eMail, String password,
-			String type) {
+
+	public Customer(int id, String name, String surname, String eMail, String password, String type) {
 		super(type);
-		
+
 		this.id = id;
-		this.shoppingCart = shoppingCart;
 		this.password = password;
-		
+
 	}
-	
+
 	public Customer() {
-		
+
 	}
-	
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public List<Product> getShoppingCart() {
-		return shoppingCart;
-	}
-
-	public void setShoppingCart(List<Product> shoppingCart) {
-		this.shoppingCart = shoppingCart;
 	}
 
 	public String getName() {
@@ -82,6 +72,5 @@ public class Customer extends User{
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
 
 }
