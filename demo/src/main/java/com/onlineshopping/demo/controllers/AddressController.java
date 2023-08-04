@@ -3,9 +3,13 @@ package com.onlineshopping.demo.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.onlineshopping.demo.dto.CreateAddressRequest;
@@ -19,17 +23,23 @@ public class AddressController {
 	@Autowired
 	private AdressService adressService;
 	
-	@PostMapping("/add")
+	@PostMapping("/addAddress")
 	void add(@RequestBody CreateAddressRequest addressRequest) {
 		adressService.add(addressRequest);
 	}
-	void delete(int id) {
-		
+	
+	@DeleteMapping("/deleteAddress")
+	void delete(@RequestParam int id) {
+		adressService.delete(id);
 	}
-	void update(CreateAddressRequest addressRequest, int id) {
-		
+	
+	@PutMapping("/updateAddress")
+	void update(@RequestBody CreateAddressRequest addressRequest, @RequestParam int id) {
+		adressService.update(addressRequest, id);
 	}
+	
+	@GetMapping("/viewAddresses")
 	List<Address> getAll(){
-		return null;
+		return adressService.getAll();
 	}
 }
