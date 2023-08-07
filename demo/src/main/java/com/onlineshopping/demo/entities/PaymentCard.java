@@ -3,6 +3,7 @@ package com.onlineshopping.demo.entities;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -13,32 +14,32 @@ public class PaymentCard {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@NotNull
 	private int id;
-	
-	@NotNull
-	@NotEmpty
-	@Size(min= 3, max = 30)
-	private int nameSurname;
-	
-	@NotNull
-	@NotEmpty
-	@Size(min= 16, max = 16)
-	private int cardNumber;
-	
-	@NotNull
-	@NotEmpty
-	@Size(min= 3, max = 3)
-	private int cvc;
-	
-	@NotNull
-	@NotEmpty
-	@Size(min=5, max=5, message = "**/** biçiminde yazınız")
-	private int date;
 
-	public PaymentCard(@NotNull int id, @NotNull @NotEmpty @Size(min = 3, max = 30) int nameSurname,
-			@NotNull @NotEmpty @Size(min = 16, max = 16) int cardNumber,
+	@NotNull
+	@NotEmpty
+	@Size(min = 3, max = 30)
+	private String nameSurname;
+
+	@NotNull
+	@NotEmpty
+	@Size(min = 16, max = 16)
+	private String cardNumber;
+
+	@NotNull
+	@NotEmpty
+	@Max(value = 999)
+	private int cvc;
+
+	@NotNull
+	@NotEmpty
+	@Size(min = 5, max = 5, message = "**/** biçiminde yazınız")
+	private String date;
+
+	public PaymentCard(@NotNull int id, @NotNull @NotEmpty @Size(min = 3, max = 30) String nameSurname,
+			@NotNull @NotEmpty @Size(min = 16, max = 16) String cardNumber,
 			@NotNull @NotEmpty @Size(min = 3, max = 3) int cvc,
-			@NotNull @NotEmpty @Size(min = 5, max = 5, message = "**/** biçiminde yazınız") int date) {
-		
+			@NotNull @NotEmpty @Size(min = 5, max = 5, message = "**/** biçiminde yazınız") String date) {
+
 		this.id = id;
 		this.nameSurname = nameSurname;
 		this.cardNumber = cardNumber;
@@ -47,7 +48,7 @@ public class PaymentCard {
 	}
 
 	public PaymentCard() {
-		
+
 	}
 
 	public int getId() {
@@ -58,19 +59,19 @@ public class PaymentCard {
 		this.id = id;
 	}
 
-	public int getNameSurname() {
+	public String getNameSurname() {
 		return nameSurname;
 	}
 
-	public void setNameSurname(int nameSurname) {
+	public void setNameSurname(String nameSurname) {
 		this.nameSurname = nameSurname;
 	}
 
-	public int getCardNumber() {
+	public String getCardNumber() {
 		return cardNumber;
 	}
 
-	public void setCardNumber(int cardNumber) {
+	public void setCardNumber(String cardNumber) {
 		this.cardNumber = cardNumber;
 	}
 
@@ -82,13 +83,12 @@ public class PaymentCard {
 		this.cvc = cvc;
 	}
 
-	public int getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(int date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
-	
-	
+
 }
