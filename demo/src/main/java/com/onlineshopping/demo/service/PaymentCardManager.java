@@ -3,11 +3,12 @@ package com.onlineshopping.demo.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.onlineshopping.demo.dto.CreatePaymentCardRequest;
 import com.onlineshopping.demo.entities.PaymentCard;
 import com.onlineshopping.demo.repository.PaymentCardRepository;
-
+@Service
 public class PaymentCardManager implements PaymentCardService {
 
 	@Autowired
