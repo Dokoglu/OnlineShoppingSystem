@@ -1,13 +1,13 @@
 package com.onlineshopping.demo.service;
 
-import java.util.List;
+import java.util.Optional;
 
-import com.onlineshopping.demo.entities.Product;
+import com.onlineshopping.demo.entities.ShoppingCard;
 
 public interface ShoppingCardService {
 	
 	void addProduct(int productID);
 	void deleteProduct(int productID);
-	List<Product> getAll();
+	Optional<ShoppingCard> getAll(int id);
 
 }
