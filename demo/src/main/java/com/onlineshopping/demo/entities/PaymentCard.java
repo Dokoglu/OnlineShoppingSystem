@@ -23,11 +23,10 @@ public class PaymentCard {
 
 	@NotNull
 	@NotEmpty
-	@Size(min = 16, max = 16)
+	@Size(min = 19, max = 19, message ="Her 4 hanenin arasında bir boşluk olacak şekilde yazınız.")
 	private String cardNumber;
 
 	@NotNull
-	@NotEmpty
 	@Max(value = 999)
 	private int cvc;
 
