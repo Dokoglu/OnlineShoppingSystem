@@ -1,4 +1,6 @@
-import {BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+import Home from './pages/Home';
 function App() {
   return (
     <div>
@@ -12,3 +14,5 @@ function App() {
 }
 
 export default App;
+
+//https://www.youtube.com/watch?v=h71OYALoFOI 9.15
