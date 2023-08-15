@@ -1,7 +1,5 @@
 package com.onlineshopping.demo.entities;
 
-import java.util.List;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,10 +16,10 @@ public class Customer extends User {
 	private int id;
 	private String name;
 	private String surname;
-	private String eMail;
+	private String e_mail;
 	private String password;
 
-	public Customer(int id, String name, String surname, String eMail, String password, String type) {
+	public Customer(int id, String name, String surname, String e_mail, String password, String type) {
 		super(type);
 
 		this.id = id;
@@ -58,11 +56,11 @@ public class Customer extends User {
 	}
 
 	public String geteMail() {
-		return eMail;
+		return e_mail;
 	}
 
-	public void seteMail(String eMail) {
-		this.eMail = eMail;
+	public void seteMail(String e_mail) {
+		this.e_mail = e_mail;
 	}
 
 	public String getPassword() {
