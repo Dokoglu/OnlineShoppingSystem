@@ -1,5 +1,6 @@
 package com.onlineshopping.demo.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,17 +20,14 @@ public class LoginManager implements LoginService {
 	}
 
 	@Override
-	public Optional<Customer> login(LoginBody loginBody) {
-		try {
-			Customer cust = new Customer();
-			cust.seteMail(loginBody.getEmail());
-			cust.setPassword(loginBody.getPassword());
-			Optional<Customer> customer =this.customerRepository.findByEmailAndPassword(cust.geteMail(), cust.getPassword());
-				return customer;
+	public Customer login(LoginBody loginBody) {
+		
+		List<Customer> custList = this.customerRepository.findAll();
+		for(Customer c: custList) {
+			if(c.geteMail().equals(loginBody.getEmail()) && c.getPassword().equals(loginBody.getPassword()))
+				return c;
 		}
-		catch (Exception e) {
-			return null; // Not Found
-	}
+		return null;
 	}	
 
 }
