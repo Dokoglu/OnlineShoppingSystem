@@ -12,10 +12,9 @@ import com.onlineshopping.demo.dto.GetByIdProductResponse;
 import com.onlineshopping.demo.entities.Product;
 import com.onlineshopping.demo.repository.ProductRepository;
 
-
 @Service
 public class ProductManager implements ProductService {
-	
+
 	@Autowired
 	private ProductRepository productRepository;
 
@@ -25,7 +24,7 @@ public class ProductManager implements ProductService {
 		product.setCategoryID(createProductRequest.getCategoryID());
 		product.setProductName(createProductRequest.getName());
 		product.setPrice(createProductRequest.getPrice());
-			
+
 		this.productRepository.save(product);
 	}
 
@@ -38,7 +37,7 @@ public class ProductManager implements ProductService {
 		product.setCategoryID(createProductRequest.getCategoryID());
 		product.setPrice(createProductRequest.getPrice());
 		product.setProductName(createProductRequest.getName());
-		
+
 		this.productRepository.save(product);
 	}
 
@@ -48,7 +47,7 @@ public class ProductManager implements ProductService {
 		GetByIdProductResponse productResponse = new GetByIdProductResponse();
 		productResponse.setProductName(product.getProductName());
 		productResponse.setProductPrice(product.getPrice());
-			
+
 		return productResponse;
 	}
 
@@ -56,16 +55,14 @@ public class ProductManager implements ProductService {
 	public List<GetAllProductResponse> getAll() {
 		List<Product> products = productRepository.findAll();
 		List<GetAllProductResponse> productResponse = new ArrayList<GetAllProductResponse>();
-		for(Product p : products) {
+		for (Product p : products) {
 			GetAllProductResponse responseItem = new GetAllProductResponse();
 			responseItem.setName(p.getProductName());
 			responseItem.setPrice(p.getPrice());
 			productResponse.add(responseItem);
 		}
-		
+
 		return productResponse;
 	}
-	
-	
 
 }
