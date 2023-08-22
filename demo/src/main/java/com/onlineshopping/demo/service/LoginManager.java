@@ -21,13 +21,13 @@ public class LoginManager implements LoginService {
 
 	@Override
 	public Customer login(LoginBody loginBody) {
-		
+
 		List<Customer> custList = this.customerRepository.findAll();
-		for(Customer c: custList) {
-			if(c.geteMail().equals(loginBody.getEmail()) && c.getPassword().equals(loginBody.getPassword()))
+		for (Customer c : custList) {
+			if (c.geteMail().equals(loginBody.getEmail()) && c.getPassword().equals(loginBody.getPassword()))
 				return c;
 		}
 		return null;
-	}	
+	}
 
 }
