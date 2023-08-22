@@ -38,4 +38,13 @@ public class CustomerController {
 	public void update(@RequestBody CreateCustomerRequest createCustomerRequest, @RequestParam int id) {
 		customerService.update(createCustomerRequest, id);
 	}
+	
+/*	@GetMapping("/{name}")
+	public Customer getByName(@PathVariable(value="name") String name) {
+		Customer customer = new Customer();
+		customer.setName(name);
+		
+		return customer;
+	}*/
+	
 }
