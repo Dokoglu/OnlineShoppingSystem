@@ -70,4 +70,10 @@ public class ProductManager implements ProductService {
 		return productRepository.findAll();
 	}
 
+	@Override
+	public List<Product> getByCategoryID(int id) {
+
+		return productRepository.findProductByCategoryID(id);
+	}
+
 }
