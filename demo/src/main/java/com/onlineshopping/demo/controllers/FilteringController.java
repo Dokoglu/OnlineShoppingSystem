@@ -10,16 +10,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.onlineshopping.demo.entities.Product;
 import com.onlineshopping.demo.service.FilteringService;
+import com.onlineshopping.demo.service.ProductService;
 
 @RestController
-@RequestMapping("/Filtering")
+@RequestMapping("/filtering")
 public class FilteringController {
 
 	@Autowired
 	private FilteringService filteringService;
+	
+	@Autowired
+	private ProductService productService;
 
 	@GetMapping("/filteredlist")
-	public List<Product> listByCategory(@RequestParam int categoryID) {
+	public List<Product> listByCategory(@RequestParam int categoryID) throws Exception {
 		return filteringService.listByCategory(categoryID);
 	}
 }
