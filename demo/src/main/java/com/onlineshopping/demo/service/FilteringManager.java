@@ -1,6 +1,5 @@
 package com.onlineshopping.demo.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +14,25 @@ public class FilteringManager implements FilteringService {
 	private ProductService productService;
 
 	@Override
-	public List<Product> listByCategory(int categoryID) throws Exception {
-		List<Product> filteredList = new ArrayList<Product>();
+	public List<Product> listByCategory(int categoryID) {
+		return productService.getByCategoryID(categoryID);		
+	}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	//throws Exception {
+		/*List<Product> filteredList = new ArrayList<Product>();
 
 		for (Product p : productService.findAll()) {
 			if (p.getCategoryID() == categoryID)
@@ -24,6 +40,5 @@ public class FilteringManager implements FilteringService {
 			else
 				throw new Exception("not found exception");
 		}
-		return filteredList;
+		return filteredList;*/
 	}
-}
