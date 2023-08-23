@@ -23,7 +23,7 @@ public class FilteringController {
 	private ProductService productService;
 
 	@GetMapping("/filteredlist")
-	public List<Product> listByCategory(@RequestParam int categoryID) throws Exception {
+	public List<Product> listByCategory(@RequestParam int categoryID) {
 		return filteringService.listByCategory(categoryID);
 	}
 }
