@@ -7,23 +7,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.onlineshopping.demo.entities.Product;
-import com.onlineshopping.demo.repository.ProductRepository;
 
 @Service
-public class FilteringManager implements FilteringService{
+public class FilteringManager implements FilteringService {
 
 	@Autowired
-	private ProductRepository productRepository;
-	
+	private ProductService productService;
+
 	@Override
-	public List<Product> listByCategory(int categoryID) {
+	public List<Product> listByCategory(int categoryID) throws Exception {
 		List<Product> filteredList = new ArrayList<Product>();
-		
-		for(Product p: productRepository.findAll()) {
-			if(p.getCategoryID() == categoryID)
+
+		for (Product p : productService.findAll()) {
+			if (p.getCategoryID() == categoryID)
 				filteredList.add(p);
+			else
+				throw new Exception("not found exception");
 		}
 		return filteredList;
 	}
-
 }
