@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.onlineshopping.demo.dto.CreateProductRequest;
 import com.onlineshopping.demo.dto.GetAllProductResponse;
 import com.onlineshopping.demo.dto.GetByIdProductResponse;
+import com.onlineshopping.demo.entities.Product;
 import com.onlineshopping.demo.service.ProductService;
 
 @RestController
