@@ -65,4 +65,9 @@ public class ProductManager implements ProductService {
 		return productResponse;
 	}
 
+	@Override
+	public List<Product> findAll() {
+		return productRepository.findAll();
+	}
+
 }
