@@ -20,11 +20,10 @@ import com.onlineshopping.demo.service.ProductService;
 @RequestMapping("/products")
 public class ProductController {
 
-	
 	private final ProductService productService;
-	
+
 	public ProductController(ProductService productService) {
-	
+
 		this.productService = productService;
 	}
 
@@ -32,27 +31,25 @@ public class ProductController {
 	public void add(@RequestBody CreateProductRequest productRequest) {
 		productService.add(productRequest);
 	}
-	
+
 	@DeleteMapping("/deleteProduct")
 	public void delete(@RequestParam int id) {
 		productService.delete(id);
 	}
-	
+
 	@PutMapping("/update")
 	public void update(@RequestBody CreateProductRequest createProductRequest, @RequestParam int id) {
 		productService.update(createProductRequest, id);
 	}
-	
-	
+
 	@GetMapping("/findProduct")
 	public GetByIdProductResponse getById(@RequestParam int id) {
-		return productService.getById(id);		
+		return productService.getById(id);
 	}
-	
-	
+
 	@GetMapping("/viewProducts")
-	public List<GetAllProductResponse> getAll(){
+	public List<GetAllProductResponse> getAll() {
 		return productService.getAll();
 	}
-	
+
 }
