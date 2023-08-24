@@ -15,30 +15,7 @@ public class FilteringManager implements FilteringService {
 
 	@Override
 	public List<Product> listByCategory(int categoryID) {
-		return productService.getByCategoryID(categoryID);		
+		return productService.getByCategoryID(categoryID);
 	}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	//throws Exception {
-		/*List<Product> filteredList = new ArrayList<Product>();
 
-		for (Product p : productService.findAll()) {
-			if (p.getCategoryID() == categoryID)
-				filteredList.add(p);
-			else
-				throw new Exception("not found exception");
-		}
-		return filteredList;*/
-	}
+}
