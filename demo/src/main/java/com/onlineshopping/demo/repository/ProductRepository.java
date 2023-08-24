@@ -10,8 +10,8 @@ import com.onlineshopping.demo.entities.Product;
 
 @EnableJpaRepositories
 @Repository
-public interface ProductRepository extends JpaRepository<Product, Integer>{
-	
+public interface ProductRepository extends JpaRepository<Product, Integer> {
+
 	List<Product> findProductByCategoryID(int id);
-	   
+
 }
