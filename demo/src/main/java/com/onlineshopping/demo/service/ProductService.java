@@ -22,5 +22,6 @@ public interface ProductService {
 	public List<Product> findAll();
 	
 	public List<Product> getByCategoryID(int id);
+	
 
 }
