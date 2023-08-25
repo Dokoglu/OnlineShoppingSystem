@@ -16,16 +16,20 @@ public class SearchingManager implements SearchingService {
 
 	@Override
 	public List<Product> findByWord(String word) {
-		List<Product> listedByWord = new ArrayList<>();
-		
-		for (Product  p: productService.findAll()) { //sorun burada
-			if(p.getProductName().contains(word))
-				listedByWord.add(p);
-		}
-		return listedByWord;
+	
+		        return productService.findByProductNameContainingIgnoreCase(word);
+		    }
 	}
+//		List<Product> listedByWord = new ArrayList<>();
+//		
+//		for (Product  p: productService.findAll()) { //sorun burada
+//			if(p.getProductName().contains(word))
+//				listedByWord.add(p);
+//		}
+//		return listedByWord;
+//	}
 
-}
+
  /*for (Product  p: productService.findAll()) {
 			for (int i = 0; i <= p.getProductName().length(); i++) {
 				int j;
