@@ -79,7 +79,6 @@ public class ProductManager implements ProductService {
 	@Override
 	public List<Product> findNameContainingIgnoreCase(String word) {
 		return productRepository.findByProductNameContainingIgnoreCase(word);
-		// bu methodun ne yapacağı belli mi?
 	}
 
 }
