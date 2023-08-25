@@ -17,7 +17,7 @@ public class SearchingManager implements SearchingService {
 	@Override
 	public List<Product> findByWord(String word) {
 	
-		        return productService.findByProductNameContainingIgnoreCase(word);
+		        return productService.findNameContainingIgnoreCase(word);
 		    }
 	}
 //		List<Product> listedByWord = new ArrayList<>();
