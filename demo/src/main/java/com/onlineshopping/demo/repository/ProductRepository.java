@@ -15,5 +15,5 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 	List<Product> findProductByCategoryID(int id);
 
 	public List<Product> findByProductNameContainingIgnoreCase(String word);
-	//Repo olduğuiçin bu methodun farklı classta içini olmuşturmamız gerekmez mi?
+
 }
