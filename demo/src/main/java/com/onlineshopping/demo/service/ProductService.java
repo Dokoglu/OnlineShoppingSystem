@@ -20,10 +20,9 @@ public interface ProductService {
 	public List<GetAllProductResponse> getAll();
 
 	public List<Product> findAll();
-	
+
 	public List<Product> getByCategoryID(int id);
 
 	public List<Product> findNameContainingIgnoreCase(String word);
-	
 
 }
