@@ -9,11 +9,14 @@ import org.springframework.stereotype.Repository;
 import com.onlineshopping.demo.entities.Product;
 import com.onlineshopping.demo.entities.ShoppingCard;
 
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+
 @Repository
 public interface ShoppingCardRepository extends JpaRepository<ShoppingCard, Integer> {
 
 	void save(int productID);
-	@Query("SELECT p FROM Product p") // ??? aynı anda 4 hatayı kaldırdı
+	@Query("SELECT p FROM Product p")
 	void viewAllProduct(List<Product> productList);
 
 }
