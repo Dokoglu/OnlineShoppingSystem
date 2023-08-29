@@ -1,10 +1,15 @@
 package com.onlineshopping.demo.entities;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Table(name="Product")
@@ -40,6 +45,10 @@ public class Product {
 	public Product() {
 		
 	}
+	
+	@ManyToMany(mappedBy = "product")
+	List<ShoppingCard> shoppingcards;
+	
 //	@ManyToOne
 //	@JoinColumn(name="categoryID")
 //	private List<Category> categories;
