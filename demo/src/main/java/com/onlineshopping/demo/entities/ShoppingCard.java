@@ -1,6 +1,8 @@
 package com.onlineshopping.demo.entities;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -35,11 +37,7 @@ public class ShoppingCard {
 
 	
 	@ManyToMany()
-	@JoinTable(
-			  name = "shopping_card", 
-			  joinColumns = @JoinColumn(name = "shoppingcard_id"), 
-			  inverseJoinColumns = @JoinColumn(name = "product__id"))
-	private List<Product> products;
+	private Set<ShoppingCard> shoppingcardSet=new HashSet<>();
 
 	public ShoppingCard() {
 
