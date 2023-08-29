@@ -2,7 +2,7 @@ package com.onlineshopping.demo.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import com.onlineshopping.demo.dto.CreateAddressRequest;
@@ -12,22 +12,20 @@ import com.onlineshopping.demo.repository.AddressRepository;
 @Service
 public class AddressManager implements AdressService {
 
-	@Autowired
-	private AddressRepository addressRepository;
+	
+	private final AddressRepository addressRepository;
+	private final ModelMapper modelMapper;
+	
+
+	public AddressManager(AddressRepository addressRepository, ModelMapper modelMapper) {
+		this.addressRepository = addressRepository;
+		this.modelMapper = modelMapper;
+	}
 
 	@Override
 	public void add(CreateAddressRequest addressRequest) {
 
-		Address address = new Address();
-
-		address.setName(addressRequest.getName());
-		address.setAddress(addressRequest.getAddress());
-		address.setCity(addressRequest.getCity());
-		address.setCountry(addressRequest.getCountry());
-		address.setHeader(addressRequest.getHeader());
-		address.setPhoneNumber(addressRequest.getPhoneNumber());
-		address.setSurname(addressRequest.getSurname());
-
+		Address address =modelMapper.map(addressRequest, Address.class);
 		addressRepository.save(address);
 	}
 
@@ -40,14 +38,7 @@ public class AddressManager implements AdressService {
 	public void update(CreateAddressRequest addressRequest, int id) {
 		
 		Address address = addressRepository.findById(id).get();
-		address.setName(addressRequest.getName());
-		address.setAddress(addressRequest.getAddress());
-		address.setCity(addressRequest.getCity());
-		address.setCountry(addressRequest.getCountry());
-		address.setHeader(addressRequest.getHeader());
-		address.setPhoneNumber(addressRequest.getPhoneNumber());
-		address.setSurname(addressRequest.getSurname());
-
+		address=modelMapper.map(addressRequest, Address.class);
 		addressRepository.save(address);
 
 	}

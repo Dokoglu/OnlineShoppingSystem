@@ -2,7 +2,7 @@ package com.onlineshopping.demo.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import com.onlineshopping.demo.dto.CreatePaymentCardRequest;
@@ -11,18 +11,19 @@ import com.onlineshopping.demo.repository.PaymentCardRepository;
 @Service
 public class PaymentCardManager implements PaymentCardService {
 
-	@Autowired
-	private PaymentCardRepository paymentCardRepository;
+	
+	private final PaymentCardRepository paymentCardRepository;
+	private final ModelMapper modelMapper;
+	
+
+	public PaymentCardManager(PaymentCardRepository paymentCardRepository, ModelMapper modelMapper) {
+		this.paymentCardRepository = paymentCardRepository;
+		this.modelMapper = modelMapper;
+	}
 
 	@Override
 	public void add(CreatePaymentCardRequest paymentCardRequest) {
-		PaymentCard paymentCard = new PaymentCard();
-
-		paymentCard.setCardNumber(paymentCardRequest.getCardNumber());
-		paymentCard.setCvc(paymentCardRequest.getCvc());
-		paymentCard.setDate(paymentCardRequest.getDate());
-		paymentCard.setNameSurname(paymentCardRequest.getNameSurname());
-
+		PaymentCard paymentCard = modelMapper.map(paymentCardRequest, PaymentCard.class);
 		paymentCardRepository.save(paymentCard);
 
 	}
@@ -36,12 +37,7 @@ public class PaymentCardManager implements PaymentCardService {
 	@Override
 	public void update(CreatePaymentCardRequest paymentCardRequest, int id) {
 		PaymentCard paymentCard =  paymentCardRepository.findById(id).get();
-		
-		paymentCard.setCardNumber(paymentCardRequest.getCardNumber());
-		paymentCard.setCvc(paymentCardRequest.getCvc());
-		paymentCard.setDate(paymentCardRequest.getDate());
-		paymentCard.setNameSurname(paymentCardRequest.getNameSurname());
-		
+		paymentCard=modelMapper.map(paymentCardRequest, PaymentCard.class);
 		paymentCardRepository.save(paymentCard);
 	}
 

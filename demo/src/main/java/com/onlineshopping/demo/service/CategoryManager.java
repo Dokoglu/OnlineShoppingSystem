@@ -3,6 +3,7 @@ package com.onlineshopping.demo.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import com.onlineshopping.demo.dto.CreateCategoryRequest;
@@ -17,18 +18,17 @@ public class CategoryManager implements CategoryDao{
 	
 
 	private final CategoryRepository categoryRepository;
+	private final ModelMapper modelMapper;
 
-	public CategoryManager(CategoryRepository categoryRepository) {
+	public CategoryManager(CategoryRepository categoryRepository, ModelMapper modelMapper) {
 		this.categoryRepository = categoryRepository;
+		this.modelMapper=modelMapper;
 	}
 
 	@Override
 	public void add(CreateCategoryRequest createCategoryRequest) {
 		// TODO Auto-generated method stub
-		Category category =new Category();
-		
-		category.setId(createCategoryRequest.getId());
-		category.setName(createCategoryRequest.getName());
+		Category category =modelMapper.map(createCategoryRequest, Category.class);
 		this.categoryRepository.save(category);
 	
 		

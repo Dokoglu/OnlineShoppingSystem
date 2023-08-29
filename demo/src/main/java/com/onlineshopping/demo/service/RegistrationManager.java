@@ -1,18 +1,20 @@
 package com.onlineshopping.demo.service;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import com.onlineshopping.demo.controllers.model.RegistrationBody;
 import com.onlineshopping.demo.entities.Customer;
-import com.onlineshopping.demo.repository.CustomerRepository;
 @Service
 public class RegistrationManager implements RegistrationService{
 
 	
-	private final CustomerRepository customerRepository;
+	private final CustomerService customerService;
+	private final ModelMapper modelMapper;
 	
-	public RegistrationManager(CustomerRepository customerRepository) {
-		this.customerRepository = customerRepository;
+	public RegistrationManager(CustomerService customerService,ModelMapper modelMapper) {
+		this.customerService = customerService;
+		this.modelMapper=modelMapper;
 	}
 
 
@@ -24,13 +26,8 @@ public class RegistrationManager implements RegistrationService{
 		
 		//()
 		if((registrationBody.getType()).equals("Customer")) {
-			Customer customer = new Customer();
-			customer.seteMail(registrationBody.getEmail());
-			customer.setName(registrationBody.getName());
-			customer.setSurname(registrationBody.getSurname());
-			customer.setPassword(registrationBody.getPassword());
-			
-			this.customerRepository.save(customer);
+			Customer customer = modelMapper.map(registrationBody, Customer.class);
+			this.customerService.save(customer);
 		}
 		
 		else {

@@ -3,7 +3,7 @@ package com.onlineshopping.demo.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import com.onlineshopping.demo.dto.CreateProductRequest;
@@ -15,16 +15,19 @@ import com.onlineshopping.demo.repository.ProductRepository;
 @Service
 public class ProductManager implements ProductService {
 
-	@Autowired
-	private ProductRepository productRepository;
+	
+	private final  ProductRepository productRepository;
+	private final ModelMapper modelMapper;
+	
+	
+
+	public ProductManager(ProductRepository productRepository, ModelMapper modelMapper) {
+		this.productRepository = productRepository;
+		this.modelMapper = modelMapper;
+	}
 
 	public void add(CreateProductRequest createProductRequest) {
-		Product product = new Product();
-		product.setDescription(createProductRequest.getDescription());
-		product.setCategoryID(createProductRequest.getCategoryID());
-		product.setProductName(createProductRequest.getName());
-		product.setPrice(createProductRequest.getPrice());
-
+		Product product = modelMapper.map(createProductRequest, Product.class);
 		this.productRepository.save(product);
 	}
 
