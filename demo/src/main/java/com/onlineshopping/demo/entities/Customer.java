@@ -6,7 +6,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Table(name = "Customer")
@@ -22,8 +24,15 @@ public class Customer extends User {
 	private String e_mail;
 	private String password;
 	
-	@OneToMany()
+	@OneToMany(mappedBy = "customer")
 	private List<Address> address;
+	
+	@OneToMany(mappedBy = "customer")
+	private List<PaymentCard> paymentCards;
+	
+	@OneToOne()
+	@JoinColumn(name = "shoppingCardID")
+	private ShoppingCard shoppingCard;	
 
 	public Customer(int id, String name, String surname, String e_mail, String password, String type) {
 		super(type);
