@@ -1,9 +1,12 @@
 package com.onlineshopping.demo.entities;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Table(name = "Customer")
@@ -18,6 +21,9 @@ public class Customer extends User {
 	private String surname;
 	private String e_mail;
 	private String password;
+	
+	@OneToMany()
+	private List<Address> address;
 
 	public Customer(int id, String name, String surname, String e_mail, String password, String type) {
 		super(type);

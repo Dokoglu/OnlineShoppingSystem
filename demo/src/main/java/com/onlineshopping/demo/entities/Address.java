@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -48,7 +50,7 @@ public class Address {
 	@NotEmpty
 	@Size(min=20, max=500)
 	private String address;
-
+	
 	public Address(int id, String name, String surname, String phoneNumber, String header, String country, String city,
 			String address) {
 		
@@ -65,6 +67,9 @@ public class Address {
 	public Address() {
 		
 	}
+	@ManyToOne()
+	@JoinColumn(name="customer_ID")
+	private Customer customer;
 
 	public int getId() {
 		return id;
