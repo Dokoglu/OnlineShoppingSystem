@@ -22,15 +22,9 @@ public class ShoppingCardManager implements ShoppingCardService {
 	}
 
 	@Override
-	public void addProduct(CreateShoppingCardRequest shoppingCardRequest) {
-		Product product = modelMapper.map(shoppingCardRequest, Product.class);
-		shoppingCardRepository.save(product);
-
-	}
-
-	@Override
-	public void deleteProduct(int productID) {
-		shoppingCardRepository.deleteById(productID);
+	public void createShoppingCard(CreateShoppingCardRequest shoppingCardRequest) {
+		ShoppingCard shoppingCard = modelMapper.map(shoppingCardRequest, ShoppingCard.class);
+		shoppingCardRepository.save(shoppingCard);
 
 	}
 
@@ -38,13 +32,6 @@ public class ShoppingCardManager implements ShoppingCardService {
 	public Optional<ShoppingCard> getAll(int id) {
 		Optional<ShoppingCard> shoppingCard = Optional.ofNullable(this.shoppingCardRepository.findById(id).get());
 		return shoppingCard;
-	}
-
-	@Override
-	public void update(CreateShoppingCardRequest shoppingCardRequest, int customerID) {
-		ShoppingCard shoppingCard = shoppingCardRepository.findById(customerID).get();
-		shoppingCard = modelMapper.map(shoppingCardRequest, ShoppingCard.class);
-		shoppingCardRepository.save(shoppingCard);
 	}
 
 }
