@@ -23,23 +23,13 @@ public class ShoppingCardController {
 	@Autowired
 	private ShoppingCardService shoppingCardService;
 	
-	@PostMapping("/addproduct")
-	void addProduct(@RequestBody CreateShoppingCardRequest shoppingCardRequest) {
-		shoppingCardService.addProduct(shoppingCardRequest);
-	}
-
-	@DeleteMapping("/deleteproduct")
-	void deleteProduct(@RequestParam int productID) {
-		shoppingCardService.deleteProduct(productID);
+	@PostMapping("/createShoppingCard")
+	void createShoppingCard(@RequestBody CreateShoppingCardRequest shoppingCardRequest) {
+		shoppingCardService.createShoppingCard(shoppingCardRequest);
 	}
 	
 	@GetMapping("/viewshoppingcard")
 	Optional<ShoppingCard> getAll(@RequestParam int id){
 		return shoppingCardService.getAll(id);
-	}
-	
-	@PutMapping("/updateShoppingCard")
-	public void update(CreateShoppingCardRequest shoppingCardRequest, int customerID) {
-		shoppingCardService.update(shoppingCardRequest, customerID);
 	}
 }
