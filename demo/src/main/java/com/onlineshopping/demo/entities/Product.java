@@ -1,17 +1,12 @@
 package com.onlineshopping.demo.entities;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Table(name="Product")
@@ -48,12 +43,10 @@ public class Product {
 		
 	}
 	
-	@ManyToMany() //manyToOne
-	@JoinTable(name="product_ShoppingCard",
-	joinColumns=@JoinColumn(name="product_id"),
-	inverseJoinColumns=@JoinColumn(name="shoppingCard_id")
-	)
-	private Set<Product> assignedProducts=new HashSet<>();
+	@ManyToOne()
+	@JoinColumn(name="shoppingCard_id")
+	private ShoppingCard shoppingCard;
+	
 	
 //	@ManyToOne
 //	@JoinColumn(name="categoryID")
