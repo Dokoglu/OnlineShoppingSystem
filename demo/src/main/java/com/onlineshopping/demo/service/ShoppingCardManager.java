@@ -2,22 +2,29 @@ package com.onlineshopping.demo.service;
 
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import com.onlineshopping.demo.dto.CreateShoppingCardRequest;
+import com.onlineshopping.demo.entities.Customer;
 import com.onlineshopping.demo.entities.Product;
 import com.onlineshopping.demo.entities.ShoppingCard;
 import com.onlineshopping.demo.repository.ShoppingCardRepository;
 @Service
 public class ShoppingCardManager implements ShoppingCardService {
 
-	@Autowired
-	private ShoppingCardRepository shoppingCardRepository;
+	private final ShoppingCardRepository shoppingCardRepository;
+	private final ModelMapper modelMapper;
+
+	public ShoppingCardManager(ShoppingCardRepository shoppingCardRepository, ModelMapper modelMapper) {
+		this.shoppingCardRepository = shoppingCardRepository;
+		this.modelMapper = modelMapper;
+	}
 
 	@Override
-	public void addProduct(int productID) {
-		Product product = new Product();
-		shoppingCardRepository.save(product.getProductID());
+	public void addProduct(CreateShoppingCardRequest shoppingCardRequest) {
+		Product product = modelMapper.map(shoppingCardRequest, Product.class);
+		shoppingCardRepository.save(product);
 
 	}
 
@@ -31,6 +38,13 @@ public class ShoppingCardManager implements ShoppingCardService {
 	public Optional<ShoppingCard> getAll(int id) {
 		Optional<ShoppingCard> shoppingCard = Optional.ofNullable(this.shoppingCardRepository.findById(id).get());
 		return shoppingCard;
+	}
+
+	@Override
+	public void update(CreateShoppingCardRequest shoppingCardRequest, int customerID) {
+		ShoppingCard shoppingCard = shoppingCardRepository.findById(customerID).get();
+		shoppingCard = modelMapper.map(shoppingCardRequest, ShoppingCard.class);
+		shoppingCardRepository.save(shoppingCard);
 	}
 
 }
