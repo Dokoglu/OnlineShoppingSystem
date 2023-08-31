@@ -7,9 +7,7 @@ import com.onlineshopping.demo.entities.ShoppingCard;
 
 public interface ShoppingCardService {
 	
-	void addProduct(CreateShoppingCardRequest shoppingCardRequest);
-	void deleteProduct(int productID);
-	void update(CreateShoppingCardRequest shoppingCardRequest, int customerID);
+	void createShoppingCard(CreateShoppingCardRequest shoppingCardRequest);
 	Optional<ShoppingCard> getAll(int id);
 
 }
