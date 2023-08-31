@@ -19,7 +19,7 @@ import jakarta.persistence.Table;
 public class Product {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)//outo
 	@Column(name="Ürün ID")
 	private int productID;
 	
@@ -48,7 +48,7 @@ public class Product {
 		
 	}
 	
-	@ManyToMany()
+	@ManyToMany() //manyToOne
 	@JoinTable(name="product_ShoppingCard",
 	joinColumns=@JoinColumn(name="product_id"),
 	inverseJoinColumns=@JoinColumn(name="shoppingCard_id")
