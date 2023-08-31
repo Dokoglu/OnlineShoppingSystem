@@ -40,6 +40,7 @@ public class ProductManager implements ProductService {
 		product.setCategoryID(createProductRequest.getCategoryID());
 		product.setPrice(createProductRequest.getPrice());
 		product.setProductName(createProductRequest.getName());
+		product.setDescription(createProductRequest.getDescription());
 
 		this.productRepository.save(product);
 	}
