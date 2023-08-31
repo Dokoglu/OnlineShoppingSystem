@@ -11,6 +11,7 @@ public class CreateProductRequest {
 	public CreateProductRequest(int id, String name,String description ,int categoryID, float price) {
 		this.id=id;
 		this.name = name;
+		this.description = description;
 		this.categoryID = categoryID;
 		this.price = price;
 		
