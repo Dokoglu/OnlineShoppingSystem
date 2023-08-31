@@ -18,5 +18,6 @@ public interface ShoppingCardRepository extends JpaRepository<ShoppingCard, Inte
 	void save(int productID);
 	@Query("SELECT p FROM Product p")
 	void viewAllProduct(List<Product> productList);
-
+	void save(Product product);
+	void findByCustomerID(int customerID);
 }
