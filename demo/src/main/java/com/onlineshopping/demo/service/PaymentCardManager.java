@@ -2,6 +2,8 @@ package com.onlineshopping.demo.service;
 
 import java.util.List;
 
+import com.onlineshopping.demo.exceptions.PaymentCardNotFoundException;
+import com.onlineshopping.demo.utilities.mappers.ModelMapperManager;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -13,17 +15,19 @@ public class PaymentCardManager implements PaymentCardService {
 
 	
 	private final PaymentCardRepository paymentCardRepository;
-	private final ModelMapper modelMapper;
+	private final ModelMapperManager modelMapperManager;
+
+	private PaymentCardNotFoundException paymentCardNotFoundException;
 	
 
-	public PaymentCardManager(PaymentCardRepository paymentCardRepository, ModelMapper modelMapper) {
+	public PaymentCardManager(PaymentCardRepository paymentCardRepository, ModelMapperManager modelMapperManager) {
 		this.paymentCardRepository = paymentCardRepository;
-		this.modelMapper = modelMapper;
+		this.modelMapperManager = modelMapperManager;
 	}
 
 	@Override
 	public void add(CreatePaymentCardRequest paymentCardRequest) {
-		PaymentCard paymentCard = modelMapper.map(paymentCardRequest, PaymentCard.class);
+		PaymentCard paymentCard = modelMapperManager.forRequest().map(paymentCardRequest, PaymentCard.class);
 		paymentCardRepository.save(paymentCard);
 
 	}
@@ -36,13 +40,15 @@ public class PaymentCardManager implements PaymentCardService {
 
 	@Override
 	public void update(CreatePaymentCardRequest paymentCardRequest, int id) {
-		PaymentCard paymentCard =  paymentCardRepository.findById(id).get();
-		paymentCard=modelMapper.map(paymentCardRequest, PaymentCard.class);
+		PaymentCard paymentCard =  paymentCardRepository.findById(id).orElseThrow(() -> new PaymentCardNotFoundException("Payment card not found "+ id));
+		modelMapperManager.forRequest().map(paymentCardRequest, paymentCard);
 		paymentCardRepository.save(paymentCard);
 	}
 
 	@Override
 	public List<PaymentCard> getAll() {
+
+
 		return paymentCardRepository.findAll();
 	}
 

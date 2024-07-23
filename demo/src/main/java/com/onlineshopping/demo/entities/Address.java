@@ -9,8 +9,12 @@ import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
 public class Address {
 
 	@Id
@@ -18,21 +22,7 @@ public class Address {
 	@NotNull
 	private int id;
 	
-	@NotNull
-	@NotEmpty
-	@Size(min= 3, max = 20)
-	private String name;
-	
-	@NotNull
-	@NotEmpty
-	@Size(min= 3, max = 30)
-	private String surname;
-	
-	@NotNull
-	@NotEmpty
-	@Size(min=10, max=10, message = "Telefon numaranızı başına 0 koymadan 10 hane şeklinde yazınız")
-	private String phoneNumber;
-	
+
 	@NotNull
 	@NotEmpty
 	@Size(min=2, max=20)
@@ -51,13 +41,10 @@ public class Address {
 	@Size(min=20, max=500)
 	private String address;
 	
-	public Address(int id, String name, String surname, String phoneNumber, String header, String country, String city,
+	public Address(int id,  String header, String country, String city,
 			String address) {
 		
 		this.id = id;
-		this.name = name;
-		this.surname = surname;
-		this.phoneNumber = phoneNumber;
 		this.header = header;
 		this.country = country;
 		this.city = city;
@@ -71,68 +58,6 @@ public class Address {
 	@JoinColumn(name="customer_ID")
 	private Customer customer;
 
-	public int getId() {
-		return id;
-	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getSurname() {
-		return surname;
-	}
-
-	public void setSurname(String surname) {
-		this.surname = surname;
-	}
-
-	public String getPhoneNumber() {
-		return phoneNumber;
-	}
-
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
-	}
-
-	public String getHeader() {
-		return header;
-	}
-
-	public void setHeader(String header) {
-		this.header = header;
-	}
-
-	public String getCountry() {
-		return country;
-	}
-
-	public void setCountry(String country) {
-		this.country = country;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
 
 }

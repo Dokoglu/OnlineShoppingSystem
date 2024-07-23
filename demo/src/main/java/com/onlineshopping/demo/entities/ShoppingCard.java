@@ -10,7 +10,17 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 @Entity
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class ShoppingCard {
 
 	@Id
@@ -18,12 +28,6 @@ public class ShoppingCard {
 	private int id;
 	@Column(insertable = false, updatable = false)
 	private int customerID;
-
-	public ShoppingCard(int id, int customerID) {
-
-		this.id = id;
-		this.customerID = customerID;
-	}
 	
 	@OneToOne()
 	@JoinColumn(name = "customerID")
@@ -35,25 +39,7 @@ public class ShoppingCard {
 	@OneToMany()
 	private List<Product> products;
 
-	public ShoppingCard() {
 
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public int getCustomerID() {
-		return customerID;
-	}
-
-	public void setCustomerID(int customerID) {
-		this.customerID = customerID;
-	}
 
 	
 }

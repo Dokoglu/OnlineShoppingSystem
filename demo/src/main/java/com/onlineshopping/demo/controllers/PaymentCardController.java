@@ -3,14 +3,7 @@ package com.onlineshopping.demo.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.onlineshopping.demo.dto.CreatePaymentCardRequest;
 import com.onlineshopping.demo.entities.PaymentCard;
@@ -20,21 +13,26 @@ import com.onlineshopping.demo.service.PaymentCardService;
 @RequestMapping("/paymentcard")
 public class PaymentCardController {
 
-	@Autowired
-	private PaymentCardService paymentCardService;
+
+	public PaymentCardController(PaymentCardService paymentCardService) {
+		this.paymentCardService = paymentCardService;
+	}
+
+	private final PaymentCardService paymentCardService;
 
 	@PostMapping("/addcard")
 	public void add(@RequestBody CreatePaymentCardRequest paymentCardRequest) {
 		paymentCardService.add(paymentCardRequest);
 	}
 
-	@DeleteMapping("/deletecard")
-	void delete(@RequestParam int id) {
+	@DeleteMapping("/{id}")
+	public void delete(@PathVariable int id) {
+
 		paymentCardService.delete(id);
 	}
 
 	@PutMapping("/updatecard")
-	void update(@RequestBody CreatePaymentCardRequest paymentCardRequest, @RequestParam int id) {
+	public void update(@RequestBody CreatePaymentCardRequest paymentCardRequest, @RequestParam int id) {
 		paymentCardService.update(paymentCardRequest, id);
 	}
 

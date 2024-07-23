@@ -1,5 +1,6 @@
 package com.onlineshopping.demo.controllers;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,17 +20,23 @@ import com.onlineshopping.demo.service.ShoppingCardService;
 @RestController
 @RequestMapping("/shoppingcard")
 public class ShoppingCardController {
-	
-	@Autowired
-	private ShoppingCardService shoppingCardService;
+
+
+
+	private final ShoppingCardService shoppingCardService;
+
+	public ShoppingCardController(ShoppingCardService shoppingCardService) {
+		this.shoppingCardService = shoppingCardService;
+	}
 	
 	@PostMapping("/createShoppingCard")
-	void createShoppingCard(@RequestBody CreateShoppingCardRequest shoppingCardRequest) {
+	public  void createShoppingCard(@RequestBody CreateShoppingCardRequest shoppingCardRequest) {
 		shoppingCardService.createShoppingCard(shoppingCardRequest);
 	}
 	
 	@GetMapping("/viewshoppingcard")
-	Optional<ShoppingCard> getAll(@RequestParam int id){
+	List<ShoppingCard> getAll (@RequestParam int id){
+
 		return shoppingCardService.getAll(id);
 	}
 }

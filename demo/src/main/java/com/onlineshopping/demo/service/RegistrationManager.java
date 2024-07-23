@@ -1,5 +1,6 @@
 package com.onlineshopping.demo.service;
 
+import com.onlineshopping.demo.utilities.mappers.ModelMapperManager;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -10,11 +11,11 @@ public class RegistrationManager implements RegistrationService{
 
 	
 	private final CustomerService customerService;
-	private final ModelMapper modelMapper;
+	private final ModelMapperManager modelMapperManager;
 	
-	public RegistrationManager(CustomerService customerService,ModelMapper modelMapper) {
+	public RegistrationManager(CustomerService customerService,ModelMapperManager modelMapperManager) {
 		this.customerService = customerService;
-		this.modelMapper=modelMapper;
+		this.modelMapperManager=modelMapperManager;
 	}
 
 
@@ -26,7 +27,7 @@ public class RegistrationManager implements RegistrationService{
 		
 		//()
 		if((registrationBody.getType()).equals("Customer")) {
-			Customer customer = modelMapper.map(registrationBody, Customer.class);
+			Customer customer = modelMapperManager.forRequest().map(registrationBody, Customer.class);
 			this.customerService.save(customer);
 		}
 		

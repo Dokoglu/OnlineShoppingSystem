@@ -14,10 +14,14 @@ import com.onlineshopping.demo.service.LoginService;
 @RequestMapping("/Login")
 public class LoginController {
 
-	@Autowired
-	private LoginService loginService;
-	
-	@GetMapping("/getcustomer")
+
+	private final LoginService loginService;
+
+    public LoginController(LoginService loginService) {
+        this.loginService = loginService;
+    }
+
+    @GetMapping("/getcustomer")
 	public Customer login(@RequestBody LoginBody loginBody) {	
 		return loginService.login(loginBody);
 		

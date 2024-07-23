@@ -16,11 +16,16 @@ import com.onlineshopping.demo.service.ProductService;
 @RequestMapping("/filtering")
 public class FilteringController {
 
-	@Autowired
-	private FilteringService filteringService;
+
+	private final FilteringService filteringService;
 	
-	@Autowired
-	private ProductService productService;
+
+	private final ProductService productService;
+
+	public FilteringController(FilteringService filteringService, ProductService productService) {
+		this.filteringService = filteringService;
+		this.productService = productService;
+	}
 
 	@GetMapping("/filteredlist")
 	public List<Product> listByCategory(@RequestParam int categoryID) {

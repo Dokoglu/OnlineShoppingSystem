@@ -3,6 +3,7 @@ package com.onlineshopping.demo.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.onlineshopping.demo.businessRules.ProductBusinessRules;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,8 @@ public class ProductManager implements ProductService {
 	
 	private final  ProductRepository productRepository;
 	private final ModelMapper modelMapper;
+
+	private ProductBusinessRules productBusinessRules;
 	
 	
 
@@ -27,6 +30,9 @@ public class ProductManager implements ProductService {
 	}
 
 	public void add(CreateProductRequest createProductRequest) {
+
+		this.productBusinessRules.checkIfProductExist(createProductRequest.getId());
+
 		Product product = modelMapper.map(createProductRequest, Product.class);
 		this.productRepository.save(product);
 	}
@@ -36,7 +42,8 @@ public class ProductManager implements ProductService {
 	}
 
 	public void update(CreateProductRequest createProductRequest, int id) {
-		Product product = productRepository.findById(id).orElseThrow();
+		Product product = productRepository.findById(id).orElseThrow(() -> new RuntimeException("Couldn't find product to update " +
+				"by id" + id));
 		product.setCategoryID(createProductRequest.getCategoryID());
 		product.setPrice(createProductRequest.getPrice());
 		product.setProductName(createProductRequest.getName());
@@ -47,7 +54,8 @@ public class ProductManager implements ProductService {
 
 	@Override
 	public GetByIdProductResponse getById(int id) {
-		Product product = productRepository.findById(id).orElseThrow();
+		Product product = productRepository.findById(id).orElseThrow(() -> new RuntimeException(new Throwable("There is no product with this id"+
+		id)));
 		GetByIdProductResponse productResponse = new GetByIdProductResponse();
 		productResponse.setProductName(product.getProductName());
 		productResponse.setProductPrice(product.getPrice());

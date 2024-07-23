@@ -9,6 +9,8 @@ import org.springframework.context.annotation.Bean;
 public class OnlineShoppingApplication {
 	@Bean
     public ModelMapper getModelMapper() {
+
+
         return new ModelMapper();
     }
 	public static void main(String[] args) {

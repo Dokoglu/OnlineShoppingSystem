@@ -1,5 +1,7 @@
 package com.onlineshopping.demo.service;
 
+import com.onlineshopping.demo.businessRules.CustomerBusinessRules;
+import com.onlineshopping.demo.exceptions.ApiRequestException;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,8 @@ public class CustomerManager implements CustomerService{
 	
 	private final CustomerRepository customerRepository;
 	private final ModelMapper modelMapper;
+
+	private CustomerBusinessRules customerBusinessRules;
 	
 	
 	public CustomerManager(CustomerRepository customerRepository, ModelMapper modelMapper) {
@@ -24,6 +28,7 @@ public class CustomerManager implements CustomerService{
 	@Override
 	public void add(CreateCustomerRequest createCustomerRequest) {
 
+		this.customerBusinessRules.checkIfCustomerExists(createCustomerRequest.getEMail());
 		Customer customer=modelMapper.map(createCustomerRequest,Customer.class);
 		this.customerRepository.save(customer);		
 	}
@@ -41,7 +46,8 @@ public class CustomerManager implements CustomerService{
 	@Override
 	public void update(CreateCustomerRequest createCustomerRequest, int id) {
 		
-		Customer customer=this.customerRepository.findById(id).get();
+		Customer customer=this.customerRepository
+				.findById(id).orElseThrow(() -> new ApiRequestException("There is no customer with this id" + id+ "to update"));
 		
 		customer.setName(createCustomerRequest.getName());
 		customer.setSurname(createCustomerRequest.getSurname());

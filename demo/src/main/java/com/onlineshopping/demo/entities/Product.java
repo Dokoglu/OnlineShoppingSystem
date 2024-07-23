@@ -8,15 +8,19 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
 @Table(name="Product")
 @Entity
+@Getter
+@Setter
 public class Product {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)//outo
 	@Column(name="Ürün ID")
-	private int productID;
+	private int id;
 	
 	@Column(name="ÜrünAdı")
 	private String productName;
@@ -30,9 +34,9 @@ public class Product {
 	@Column(name="ÜrünFiyatı")
 	private float price;
 
-	public Product(int productID, String productName, String description, int categoryID, float price) {
+	public Product(int id, String productName, String description, int categoryID, float price) {
 
-		this.productID = productID;
+		this.id= id;
 		this.productName = productName;
 		this.description = description;
 		this.categoryID = categoryID;
@@ -56,47 +60,6 @@ public class Product {
 
 	// Getter and Setter Methods
 
-	public int getProductID() {
-		return productID;
-	}
 
-	public void setProductID(int productID) {
-		this.productID = productID;
-	}
-
-	public String getProductName() {
-		return productName;
-	}
-
-	public void setProductName(String productName) {
-		this.productName = productName;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public int getCategoryID() {
-		return categoryID;
-	}
-
-	public void setCategoryID(int categoryID) {
-		this.categoryID = categoryID;
-	}
-
-
-	public float getPrice() {
-		return price;
-	}
-
-
-	public void setPrice(float price) {
-		this.price = price;
-	}
-	
 
 }

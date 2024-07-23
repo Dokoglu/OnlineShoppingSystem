@@ -13,10 +13,14 @@ import com.onlineshopping.demo.service.RegistrationService;
 @RequestMapping("/authentication")
 public class AuthenticationController {
 	
-	@Autowired
-	private RegistrationService registrationService;
-	
-	@PostMapping("/register")
+
+	private final RegistrationService registrationService;
+
+    public AuthenticationController(RegistrationService registrationService) {
+        this.registrationService = registrationService;
+    }
+
+    @PostMapping("/register")
 	public void register(@RequestBody RegistrationBody registrationBody) {
 		registrationService.register(registrationBody);
 	}

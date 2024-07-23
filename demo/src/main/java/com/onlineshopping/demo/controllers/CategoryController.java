@@ -2,6 +2,8 @@ package com.onlineshopping.demo.controllers;
 
 import java.util.List;
 
+import jakarta.validation.Valid;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,14 +25,16 @@ public class CategoryController {
 	}
 
 	@PostMapping("/add")
-	public void add(@RequestBody CreateCategoryRequest createCategoryRequest) {
-		categoryDao.add(createCategoryRequest);
+	public void add(@Valid @RequestBody CreateCategoryRequest createCategoryRequest) {
+
+		 categoryDao.add(createCategoryRequest);
 
 	}
 
 	@GetMapping("/getAll")
-	public List<GetAllCategoryResponse> getAllResponse() {
-		return categoryDao.getAllResponse();
+	public ResponseEntity<List<GetAllCategoryResponse>> getAllResponse()
+	{
+		return ResponseEntity.ok( categoryDao.getAllResponse());
 	}
 
 }

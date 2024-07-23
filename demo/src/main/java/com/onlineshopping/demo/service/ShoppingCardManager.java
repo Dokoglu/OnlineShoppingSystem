@@ -1,8 +1,12 @@
 package com.onlineshopping.demo.service;
 
+import java.util.List;
 import java.util.Optional;
 
+import com.onlineshopping.demo.businessRules.ShoppingCardBusinessRules;
+import com.onlineshopping.demo.utilities.mappers.ModelMapperManager;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.internal.bytebuddy.agent.builder.AgentBuilder;
 import org.springframework.stereotype.Service;
 
 import com.onlineshopping.demo.dto.CreateShoppingCardRequest;
@@ -14,24 +18,30 @@ import com.onlineshopping.demo.repository.ShoppingCardRepository;
 public class ShoppingCardManager implements ShoppingCardService {
 
 	private final ShoppingCardRepository shoppingCardRepository;
-	private final ModelMapper modelMapper;
+	private final ModelMapperManager modelMapperManager;
 
-	public ShoppingCardManager(ShoppingCardRepository shoppingCardRepository, ModelMapper modelMapper) {
+	private ShoppingCardBusinessRules shoppingCardBusinessRules;
+
+	public ShoppingCardManager(ShoppingCardRepository shoppingCardRepository, ModelMapperManager modelMapperManager) {
 		this.shoppingCardRepository = shoppingCardRepository;
-		this.modelMapper = modelMapper;
+		this.modelMapperManager = modelMapperManager;
 	}
 
 	@Override
 	public void createShoppingCard(CreateShoppingCardRequest shoppingCardRequest) {
-		ShoppingCard shoppingCard = modelMapper.map(shoppingCardRequest, ShoppingCard.class);
+		ShoppingCard shoppingCard = modelMapperManager.forRequest().map(shoppingCardRequest, ShoppingCard.class);
 		shoppingCardRepository.save(shoppingCard);
 
 	}
 
 	@Override
-	public Optional<ShoppingCard> getAll(int id) {
-		Optional<ShoppingCard> shoppingCard = Optional.ofNullable(this.shoppingCardRepository.findById(id).get());
-		return shoppingCard;
+	public List<ShoppingCard> getAll(int id) {
+
+		this.shoppingCardBusinessRules.checkIfShoppingCardIdExists(id);
+
+		List<ShoppingCard> shoppingCards=shoppingCardRepository.findAll();
+
+		return shoppingCards;
 	}
 
 }

@@ -7,6 +7,7 @@ import com.onlineshopping.demo.entities.Customer;
 
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Integer>{
-	
+
+		boolean checkIfCustomerExist(String email);
 	
 	}

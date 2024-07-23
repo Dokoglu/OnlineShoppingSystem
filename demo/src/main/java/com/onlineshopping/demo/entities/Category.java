@@ -8,6 +8,8 @@ import jakarta.persistence.Table;
 
 
 @Table(name="Category")
+
+
 @Entity
 public class Category {
 	

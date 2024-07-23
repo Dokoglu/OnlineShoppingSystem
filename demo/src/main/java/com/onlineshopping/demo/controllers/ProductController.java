@@ -30,6 +30,7 @@ public class ProductController {
 
 	@PostMapping("/add")
 	public void add(@RequestBody CreateProductRequest productRequest) {
+
 		productService.add(productRequest);
 	}
 

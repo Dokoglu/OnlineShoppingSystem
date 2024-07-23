@@ -9,5 +9,6 @@ import com.onlineshopping.demo.entities.Category;
 @Repository
 public interface CategoryRepository extends JpaRepository<Category,Integer> {
 
-	
+
+    boolean existsById(int id);
 }

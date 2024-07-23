@@ -14,6 +14,7 @@ public class SearchingManager implements SearchingService {
 	
 
 	public SearchingManager(ProductService productService) {
+
 		this.productService = productService;
 	}
 

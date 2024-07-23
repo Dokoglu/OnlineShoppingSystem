@@ -17,17 +17,23 @@ import com.onlineshopping.demo.service.CustomerService;
 @RestController
 @RequestMapping("/customer")
 public class CustomerController {
-	@Autowired
-	private CustomerService customerService;
-	
-	@PostMapping("/addCustomer")
+
+	private final CustomerService customerService;
+
+    public CustomerController(CustomerService customerService) {
+        this.customerService = customerService;
+    }
+
+    @PostMapping("/addCustomer")
 	public void add(@RequestBody CreateCustomerRequest createCustomerRequest) {
 		customerService.add(createCustomerRequest);
 	}
 	
-	@DeleteMapping("/deleteCustomer")
-	public void delete(@RequestParam int id) {
+	@DeleteMapping("/deleteCustomer/{id}")
+	public String delete(@PathVariable int id) {
+
 		customerService.delete(id);
+		return id + "numaralı müşteri silindi";
 	}
 	
 	@GetMapping("/viewCustomers")

@@ -12,10 +12,11 @@ import com.onlineshopping.demo.repository.CustomerRepository;
 
 @Service
 public class LoginManager implements LoginService {
-	@Autowired
+
 	private final CustomerRepository customerRepository;
 
 	public LoginManager(CustomerRepository customerRepository) {
+
 		this.customerRepository = customerRepository;
 	}
 
@@ -24,7 +25,8 @@ public class LoginManager implements LoginService {
 
 		List<Customer> custList = this.customerRepository.findAll();
 		for (Customer c : custList) {
-			if (c.geteMail().equals(loginBody.getEmail()) && c.getPassword().equals(loginBody.getPassword()))
+			if (c.getE_mail().equals(loginBody.getEmail())
+					&& c.getPassword().equals(loginBody.getPassword()))
 				return c;
 		}
 		return null;
